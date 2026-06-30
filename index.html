@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chúc Mừng Sinh Nhật</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fbf4e8;
+    --paper:#fffaf2;
+    --ink:#3a2a22;
+    --ink-soft:#6b564a;
+    --gold:#b9893f;
+    --gold-deep:#8c641f;
+    --gold-soft:#e3c07f;
+    --blush:#c97a6d;
+    --line: rgba(185,137,63,0.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Be Vietnam Pro', sans-serif;
+    overflow-x:hidden;
+  }
+  .serif{font-family:'Playfair Display', serif;}
+
+  /* ---------- ambient particles ---------- */
+  #particles{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;}
+  .spark{
+    position:absolute;
+    width:3px;height:3px;
+    border-radius:50%;
+    background:var(--gold-soft);
+    opacity:0;
+    animation:rise linear infinite;
+    box-shadow:0 0 6px 1px rgba(227,192,127,0.7);
+  }
+  @keyframes rise{
+    0%{transform:translateY(0) translateX(0);opacity:0;}
+    10%{opacity:0.8;}
+    90%{opacity:0.4;}
+    100%{transform:translateY(-110vh) translateX(20px);opacity:0;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2rem 1.5rem;
+    background:
+      radial-gradient(ellipse at 50% 25%, rgba(227,192,127,0.30), transparent 60%),
+      radial-gradient(ellipse at 50% 100%, rgba(201,122,109,0.14), transparent 55%),
+      var(--cream);
+    z-index:2;
+  }
+  .candle{
+    position:relative;
+    width:54px;
+    height:120px;
+    margin-bottom:1.6rem;
+  }
+  .flame{
+    position:absolute;
+    top:-34px;left:50%;
+    transform:translateX(-50%);
+    width:18px;height:30px;
+    border-radius:50% 50% 50% 50% / 65% 65% 35% 35%;
+    background:radial-gradient(ellipse at 50% 70%, #fff7da 0%, #f6c869 35%, #df8a3a 70%, transparent 100%);
+    filter:blur(0.3px);
+    animation:flicker 2.6s ease-in-out infinite;
+    transform-origin:50% 100%;
+  }
+  .glow{
+    position:absolute;
+    top:-46px;left:50%;
+    transform:translateX(-50%);
+    width:70px;height:70px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(246,200,105,0.45), transparent 70%);
+    animation:flicker 2.6s ease-in-out infinite;
+  }
+  @keyframes flicker{
+    0%,100%{transform:translateX(-50%) rotate(-1.5deg) scale(1);}
+    25%{transform:translateX(-50%) rotate(2deg) scale(1.05);}
+    50%{transform:translateX(-50%) rotate(-1deg) scale(0.96);}
+    75%{transform:translateX(-50%) rotate(1.5deg) scale(1.03);}
+  }
+  .wax{
+    position:absolute;
+    bottom:0;left:50%;
+    transform:translateX(-50%);
+    width:30px;height:100px;
+    background:linear-gradient(180deg, var(--gold-soft), var(--gold) 60%, var(--gold-deep));
+    border-radius:4px 4px 2px 2px;
+    box-shadow:0 6px 18px rgba(140,100,31,0.18);
+  }
+  .wick{
+    position:absolute;
+    top:-6px;left:50%;
+    transform:translateX(-50%);
+    width:2px;height:8px;
+    background:#5a4530;
+  }
+
+  .eyebrow{
+    font-size:0.78rem;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    opacity:0.9;
+    margin-bottom:0.9rem;
+  }
+  h1.title{
+    font-size:clamp(2.6rem, 7vw, 4.6rem);
+    font-weight:500;
+    font-style:italic;
+    line-height:1.1;
+    color:var(--ink);
+  }
+  .title em{
+    display:block;
+    font-style:normal;
+    font-weight:400;
+    font-size:0.42em;
+    letter-spacing:0.05em;
+    color:var(--blush);
+    margin-top:0.6rem;
+  }
+  .hero-sub{
+    margin-top:1.6rem;
+    max-width:480px;
+    font-size:1rem;
+    font-weight:300;
+    line-height:1.8;
+    color:var(--ink-soft);
+  }
+  .scroll-cue{
+    margin-top:3.2rem;
+    font-size:0.75rem;
+    letter-spacing:0.2em;
+    color:var(--gold-deep);
+    opacity:0.75;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.5rem;
+    animation:bob 2.2s ease-in-out infinite;
+  }
+  .scroll-cue svg{width:14px;height:20px;}
+  @keyframes bob{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(8px);}
+  }
+
+  /* ---------- chapters ---------- */
+  .chapter{
+    position:relative;
+    z-index:2;
+    max-width:1040px;
+    margin:0 auto;
+    padding:6rem 1.5rem;
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:3.2rem;
+    align-items:center;
+  }
+  .chapter.reverse{grid-template-columns:1.15fr 0.85fr;}
+  .chapter.reverse .chapter-text{order:2;}
+  .chapter.reverse .chapter-media{order:1;}
+
+  .chapter-label{
+    font-size:0.72rem;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:1rem;
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity 0.9s ease, transform 0.9s ease;
+  }
+  .chapter-heading{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.7rem, 3.4vw, 2.5rem);
+    color:var(--ink);
+    margin-bottom:1.1rem;
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity 0.9s ease 0.1s, transform 0.9s ease 0.1s;
+  }
+  .chapter-text p.body{
+    font-size:0.96rem;
+    font-weight:300;
+    line-height:1.85;
+    color:var(--ink-soft);
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s;
+  }
+  .chapter.in-view .chapter-label,
+  .chapter.in-view .chapter-heading,
+  .chapter.in-view .chapter-text p.body{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .frame{
+    position:relative;
+    border-radius:16px;
+    padding:10px;
+    background:linear-gradient(160deg, rgba(255,250,242,0.9), rgba(227,192,127,0.12));
+    border:1px solid var(--line);
+    box-shadow:0 18px 40px -20px rgba(140,100,31,0.25);
+    opacity:0;
+    transform:translateY(24px) scale(0.97);
+    transition:opacity 1s ease 0.15s, transform 1s ease 0.15s;
+  }
+  .chapter.in-view .frame{opacity:1;transform:translateY(0) scale(1);}
+  .frame iframe{
+    width:100%;
+    aspect-ratio:9/16;
+    max-height:560px;
+    display:block;
+    margin:0 auto;
+    border-radius:10px;
+    background:#000;
+    border:none;
+  }
+  .frame-caption{
+    text-align:center;
+    font-size:0.74rem;
+    letter-spacing:0.1em;
+    color:var(--gold-deep);
+    opacity:0.85;
+    margin-top:0.7rem;
+    font-style:italic;
+    font-family:'Playfair Display', serif;
+  }
+
+  /* secret chapter, centered */
+  .secret{
+    max-width:640px;
+    margin:0 auto;
+    padding:6rem 1.5rem 7rem;
+    text-align:center;
+    position:relative;
+    z-index:2;
+  }
+  .secret .chapter-label,.secret .chapter-heading{opacity:0;transform:translateY(14px);transition:opacity 0.9s ease, transform 0.9s ease;}
+  .secret.in-view .chapter-label,.secret.in-view .chapter-heading{opacity:1;transform:translateY(0);}
+  .secret .chapter-heading{margin-bottom:0.4rem;}
+  .secret-hint{
+    font-size:0.9rem;
+    font-weight:300;
+    color:var(--ink-soft);
+    margin-bottom:2.4rem;
+    font-style:italic;
+  }
+  .secret .frame{max-width:520px;margin:0 auto;}
+
+  .divider{
+    width:1px;
+    height:64px;
+    margin:0 auto;
+    background:linear-gradient(180deg, transparent, var(--gold), transparent);
+    opacity:0.55;
+    position:relative;
+    z-index:2;
+  }
+
+  /* ---------- closing ---------- */
+  .closing{
+    position:relative;
+    z-index:2;
+    min-height:90vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:5rem 1.5rem;
+    background:radial-gradient(ellipse at 50% 50%, rgba(227,192,127,0.20), transparent 65%);
+  }
+  .closing .mark{
+    font-size:0.74rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:1.6rem;
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity 1s ease, transform 1s ease;
+  }
+  .closing-msg{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.5rem, 4vw, 2.3rem);
+    line-height:1.55;
+    max-width:680px;
+    color:var(--ink);
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity 1s ease 0.15s, transform 1s ease 0.15s;
+  }
+  .closing-msg span.accent{color:var(--blush);}
+  .signature{
+    margin-top:2.4rem;
+    font-family:'Playfair Display', serif;
+    font-size:1.1rem;
+    color:var(--gold-deep);
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity 1s ease 0.3s, transform 1s ease 0.3s;
+  }
+  .signature small{
+    display:block;
+    font-family:'Be Vietnam Pro', sans-serif;
+    font-size:0.7rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-top:0.6rem;
+    font-style:normal;
+  }
+  .closing.in-view .mark,
+  .closing.in-view .closing-msg,
+  .closing.in-view .signature{opacity:1;transform:translateY(0);}
+
+  @media (max-width:760px){
+    .chapter, .chapter.reverse{
+      grid-template-columns:1fr;
+      gap:1.8rem;
+      padding:4rem 1.4rem;
+    }
+    .chapter.reverse .chapter-text,
+    .chapter.reverse .chapter-media{order:initial;}
+  }
+</style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<section class="hero">
+  <div class="candle">
+    <div class="glow"></div>
+    <div class="flame"></div>
+    <div class="wick"></div>
+    <div class="wax"></div>
+  </div>
+  <p class="eyebrow">Một ngày đặc biệt</p>
+  <h1 class="title">Chúc Mừng Sinh Nhật<em>Gửi đến người mà mình luôn trân quý</em></h1>
+  <p class="hero-sub">Trước khi nói thành lời, hãy để ba thước phim nhỏ này thay mình kể hết những điều muốn gửi gắm hôm nay.</p>
+  <div class="scroll-cue">
+    <span>Lướt xuống</span>
+    <svg viewBox="0 0 14 20" fill="none"><path d="M7 1v17M1 12l6 6 6-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="chapter" data-chapter>
+  <div class="chapter-text">
+    <p class="chapter-label">Chương một</p>
+    <h2 class="chapter-heading">Khoảnh khắc nhận quà</h2>
+    <p class="body">Niềm vui đôi khi không nằm ở món quà, mà ở khoảnh khắc mở ra nó. Mong rằng nụ cười trong video này là một mảnh ghép nhỏ, góp thêm vào một ngày thật trọn vẹn của bạn.</p>
+  </div>
+  <div class="chapter-media">
+    <div class="frame">
+      <iframe src="https://drive.google.com/file/d/1OtwMBphZCfUaWYdgmExhqUn7ns-v-nZA/preview" allow="autoplay" allowfullscreen></iframe>
+      <p class="frame-caption">"Đã nhận quà nha"</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="chapter reverse" data-chapter>
+  <div class="chapter-text">
+    <p class="chapter-label">Chương hai</p>
+    <h2 class="chapter-heading">Lời chúc</h2>
+    <p class="body">Có những điều chỉ nói được khi nhìn thẳng vào nhau, dù chỉ qua một khung hình nhỏ. Đây là lời chúc được ghi lại bằng tất cả sự chân thành, dành riêng cho bạn trong ngày hôm nay.</p>
+  </div>
+  <div class="chapter-media">
+    <div class="frame">
+      <iframe src="https://drive.google.com/file/d/1ZrVvXjv6orMMrSi2BBmpphdQh-ioXzRG/preview" allow="autoplay" allowfullscreen></iframe>
+      <p class="frame-caption">"Lời chúc nhen"</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="secret" data-chapter>
+  <p class="chapter-label">Chương ba</p>
+  <h2 class="chapter-heading">Tâm sự</h2>
+  <p class="secret-hint">Một điều giấu kín trong tim, hôm nay xin được mở ra cùng bạn.</p>
+  <div class="frame">
+    <iframe src="https://drive.google.com/file/d/1QuBN3E-_1IalFP8QvbVOIRfKWePpc2wV/preview" allow="autoplay" allowfullscreen></iframe>
+    <p class="frame-caption">Tâm sự</p>
+  </div>
+</section>
+
+<section class="closing" data-chapter>
+  <p class="mark">Lời cuối</p>
+  <p class="closing-msg">Chúc bạn một tuổi mới <span class="accent">an yên như ánh nến</span>, rực rỡ như những điều bạn xứng đáng có được, và luôn được yêu thương theo cách bạn vẫn luôn yêu thương người khác.<br>Sinh nhật vui vẻ nhé.</p>
+  <p class="signature">Với tất cả tấm lòng<small>Gửi từ một người luôn ở đây vì bạn</small></p>
+</section>
+
+<script>
+  const pc = document.getElementById('particles');
+  const n = 26;
+  for(let i=0;i<n;i++){
+    const s = document.createElement('div');
+    s.className = 'spark';
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.bottom = '-10px';
+    s.style.animationDuration = (8 + Math.random()*10) + 's';
+    s.style.animationDelay = (Math.random()*12) + 's';
+    s.style.width = s.style.height = (2 + Math.random()*2) + 'px';
+    pc.appendChild(s);
+  }
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in-view');
+      }
+    });
+  }, {threshold:0.25});
+  document.querySelectorAll('[data-chapter]').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
