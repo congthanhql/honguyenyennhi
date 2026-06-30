@@ -3,444 +3,700 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chúc Mừng Sinh Nhật</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<title>Chúc mừng sinh nhật</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/iconfont/tabler-icons.min.css">
 <style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   :root{
-    --wine:#2a1014;
-    --wine-deep:#190a0c;
-    --cream:#f6ecdd;
-    --gold:#cf9b4e;
-    --gold-soft:#e4c182;
-    --blush:#d98e8a;
-    --line: rgba(228,193,130,0.25);
+    --bg-1:#fdf6f0;
+    --bg-2:#fff;
+    --ink:#2c2420;
+    --ink-soft:#7a6f68;
+    --accent:#d85a30;
+    --accent-soft:#f5c4b3;
+    --pink:#d4537e;
+    --pink-soft:#f4c0d1;
+    --teal:#1d9e75;
+    --teal-soft:#9fe1cb;
+    --gold:#ef9f27;
+    --gold-soft:#fac775;
+    --border:rgba(44,36,32,0.10);
+    --shadow: 0 20px 50px rgba(44,36,32,0.12);
+    --radius:18px;
   }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--wine-deep);
-    color:var(--cream);
-    font-family:'Be Vietnam Pro', sans-serif;
+  html,body{
+    height:100%;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at 20% 10%, #fff7ef 0%, #fdf3eb 35%, #fbeee3 100%);
+    color: var(--ink);
     overflow-x:hidden;
   }
-  .serif{font-family:'Playfair Display', serif;}
-
-  /* ---------- ambient particles ---------- */
-  #particles{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;}
-  .spark{
-    position:absolute;
-    width:3px;height:3px;
-    border-radius:50%;
-    background:var(--gold-soft);
-    opacity:0;
-    animation:rise linear infinite;
-    box-shadow:0 0 6px 1px rgba(228,193,130,0.6);
-  }
-  @keyframes rise{
-    0%{transform:translateY(0) translateX(0);opacity:0;}
-    10%{opacity:0.9;}
-    90%{opacity:0.5;}
-    100%{transform:translateY(-110vh) translateX(20px);opacity:0;}
-  }
-
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative;
-    min-height:100vh;
+  body{
     display:flex;
-    flex-direction:column;
     align-items:center;
     justify-content:center;
-    text-align:center;
-    padding:2rem 1.5rem;
-    background:
-      radial-gradient(ellipse at 50% 30%, rgba(207,155,78,0.16), transparent 60%),
-      radial-gradient(ellipse at 50% 100%, rgba(217,142,138,0.10), transparent 55%),
-      var(--wine-deep);
-    z-index:2;
-  }
-  .candle{
+    min-height:100vh;
+    padding: 24px 16px;
     position:relative;
-    width:54px;
-    height:120px;
-    margin-bottom:1.6rem;
-  }
-  .flame{
-    position:absolute;
-    top:-34px;left:50%;
-    transform:translateX(-50%);
-    width:18px;height:30px;
-    border-radius:50% 50% 50% 50% / 65% 65% 35% 35%;
-    background:radial-gradient(ellipse at 50% 70%, #fff3c4 0%, #f3b65a 35%, #d9722c 70%, transparent 100%);
-    filter:blur(0.3px);
-    animation:flicker 2.6s ease-in-out infinite;
-    transform-origin:50% 100%;
-  }
-  .glow{
-    position:absolute;
-    top:-46px;left:50%;
-    transform:translateX(-50%);
-    width:70px;height:70px;
-    border-radius:50%;
-    background:radial-gradient(circle, rgba(243,182,90,0.35), transparent 70%);
-    animation:flicker 2.6s ease-in-out infinite;
-  }
-  @keyframes flicker{
-    0%,100%{transform:translateX(-50%) rotate(-1.5deg) scale(1);}
-    25%{transform:translateX(-50%) rotate(2deg) scale(1.05);}
-    50%{transform:translateX(-50%) rotate(-1deg) scale(0.96);}
-    75%{transform:translateX(-50%) rotate(1.5deg) scale(1.03);}
-  }
-  .wax{
-    position:absolute;
-    bottom:0;left:50%;
-    transform:translateX(-50%);
-    width:30px;height:100px;
-    background:linear-gradient(180deg, var(--gold-soft), var(--gold) 60%, #a87a35);
-    border-radius:4px 4px 2px 2px;
-  }
-  .wick{
-    position:absolute;
-    top:-6px;left:50%;
-    transform:translateX(-50%);
-    width:2px;height:8px;
-    background:#3a2a1a;
   }
 
-  .eyebrow{
-    font-size:0.78rem;
-    letter-spacing:0.32em;
-    text-transform:uppercase;
-    color:var(--gold-soft);
-    opacity:0.85;
-    margin-bottom:0.9rem;
+  /* floating decorative shapes */
+  .bg-blob{
+    position:fixed;
+    border-radius:50%;
+    filter: blur(50px);
+    opacity:0.35;
+    z-index:0;
+    pointer-events:none;
+    animation: float 14s ease-in-out infinite;
+  }
+  .blob1{ width:320px; height:320px; background:var(--accent-soft); top:-80px; left:-100px; animation-delay:0s;}
+  .blob2{ width:280px; height:280px; background:var(--pink-soft); bottom:-100px; right:-80px; animation-delay:3s;}
+  .blob3{ width:200px; height:200px; background:var(--gold-soft); top:40%; right:-60px; animation-delay:6s;}
+  @keyframes float{
+    0%,100%{ transform: translateY(0) translateX(0) scale(1); }
+    50%{ transform: translateY(-30px) translateX(20px) scale(1.08); }
+  }
+
+  .confetti{
+    position:fixed;
+    top:-20px;
+    border-radius:2px;
+    opacity:0;
+    z-index:5;
+    pointer-events:none;
+  }
+
+  .app{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:400px;
+  }
+
+  /* ---------- Card shell ---------- */
+  .card{
+    background: var(--bg-2);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    overflow:hidden;
+    position:relative;
+  }
+
+  /* ---------- AUTH VIEW ---------- */
+  #authView{
+    padding: 40px 32px 32px;
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  .logo-circle{
+    width:64px;height:64px;border-radius:50%;
+    background: linear-gradient(135deg, var(--accent), var(--pink));
+    display:flex;align-items:center;justify-content:center;
+    margin: 0 auto 18px;
+    box-shadow: 0 10px 25px rgba(216,90,48,0.35);
+    animation: pop .6s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  .logo-circle i{ font-size:30px; color:#fff; }
+  @keyframes pop{
+    0%{ transform: scale(0); opacity:0; }
+    100%{ transform: scale(1); opacity:1; }
   }
   h1.title{
-    font-size:clamp(2.6rem, 7vw, 4.6rem);
-    font-weight:500;
-    font-style:italic;
-    line-height:1.1;
-    color:var(--cream);
-    text-shadow:0 0 30px rgba(207,155,78,0.25);
+    text-align:center;
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:6px;
+    letter-spacing:-0.01em;
   }
-  .title em{
-    display:block;
-    font-style:normal;
-    font-weight:400;
-    font-size:0.42em;
-    letter-spacing:0.05em;
-    color:var(--blush);
-    margin-top:0.6rem;
-  }
-  .hero-sub{
-    margin-top:1.6rem;
-    max-width:480px;
-    font-size:1rem;
-    font-weight:300;
-    line-height:1.8;
-    color:rgba(246,236,221,0.78);
-  }
-  .scroll-cue{
-    margin-top:3.2rem;
-    font-size:0.75rem;
-    letter-spacing:0.2em;
-    color:var(--gold-soft);
-    opacity:0.7;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:0.5rem;
-    animation:bob 2.2s ease-in-out infinite;
-  }
-  .scroll-cue svg{width:14px;height:20px;}
-  @keyframes bob{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(8px);}
+  p.subtitle{
+    text-align:center;
+    font-size:14px;
+    color: var(--ink-soft);
+    margin-bottom:28px;
+    line-height:1.5;
   }
 
-  /* ---------- chapters ---------- */
-  .chapter{
+  .field{
     position:relative;
-    z-index:2;
-    max-width:1040px;
-    margin:0 auto;
-    padding:6rem 1.5rem;
-    display:grid;
-    grid-template-columns:0.85fr 1.15fr;
-    gap:3.2rem;
-    align-items:center;
+    margin-bottom:16px;
   }
-  .chapter.reverse{grid-template-columns:1.15fr 0.85fr;}
-  .chapter.reverse .chapter-text{order:2;}
-  .chapter.reverse .chapter-media{order:1;}
-
-  .chapter-label{
-    font-size:0.72rem;
-    letter-spacing:0.28em;
-    text-transform:uppercase;
-    color:var(--gold);
-    margin-bottom:1rem;
-    opacity:0;
-    transform:translateY(14px);
-    transition:opacity 0.9s ease, transform 0.9s ease;
+  .field i.field-icon{
+    position:absolute;
+    left:16px; top:50%;
+    transform: translateY(-50%);
+    font-size:18px;
+    color: var(--ink-soft);
+    pointer-events:none;
+    transition: color .2s ease;
   }
-  .chapter-heading{
-    font-family:'Playfair Display', serif;
-    font-style:italic;
-    font-weight:500;
-    font-size:clamp(1.7rem, 3.4vw, 2.5rem);
-    color:var(--cream);
-    margin-bottom:1.1rem;
-    opacity:0;
-    transform:translateY(14px);
-    transition:opacity 0.9s ease 0.1s, transform 0.9s ease 0.1s;
-  }
-  .chapter-text p.body{
-    font-size:0.96rem;
-    font-weight:300;
-    line-height:1.85;
-    color:rgba(246,236,221,0.75);
-    opacity:0;
-    transform:translateY(14px);
-    transition:opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s;
-  }
-  .chapter.in-view .chapter-label,
-  .chapter.in-view .chapter-heading,
-  .chapter.in-view .chapter-text p.body{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-  .frame{
-    position:relative;
-    border-radius:14px;
-    padding:10px;
-    background:linear-gradient(160deg, rgba(228,193,130,0.16), rgba(228,193,130,0.02));
-    border:1px solid var(--line);
-    opacity:0;
-    transform:translateY(24px) scale(0.97);
-    transition:opacity 1s ease 0.15s, transform 1s ease 0.15s;
-  }
-  .chapter.in-view .frame{opacity:1;transform:translateY(0) scale(1);}
-  .frame video, .frame iframe{
+  .field input{
     width:100%;
-    display:block;
-    border-radius:8px;
-    background:#000;
+    padding: 14px 16px 14px 46px;
+    border-radius: 12px;
+    border: 1.5px solid var(--border);
+    background: #fbfaf8;
+    font-size:15px;
+    color: var(--ink);
+    outline:none;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
   }
-  .frame video{aspect-ratio:9/16;object-fit:cover;max-height:560px;margin:0 auto;}
-  .frame-caption{
-    text-align:center;
-    font-size:0.74rem;
-    letter-spacing:0.1em;
-    color:var(--gold-soft);
-    opacity:0.7;
-    margin-top:0.7rem;
-    font-style:italic;
-    font-family:'Playfair Display', serif;
+  .field input::placeholder{ color: #b3a89f; }
+  .field input:focus{
+    border-color: var(--accent);
+    background:#fff;
+    box-shadow: 0 0 0 4px rgba(216,90,48,0.10);
+  }
+  .field input:focus + i.field-icon,
+  .field:focus-within i.field-icon{ color: var(--accent); }
+
+  .toggle-pass{
+    position:absolute;
+    right:14px; top:50%;
+    transform: translateY(-50%);
+    background:none; border:none;
+    font-size:18px;
+    color: var(--ink-soft);
+    cursor:pointer;
+    padding:4px;
+    line-height:0;
   }
 
-  /* secret chapter, centered */
-  .secret{
-    max-width:640px;
-    margin:0 auto;
-    padding:6rem 1.5rem 7rem;
-    text-align:center;
-    position:relative;
-    z-index:2;
-  }
-  .secret .chapter-label,.secret .chapter-heading{opacity:0;transform:translateY(14px);transition:opacity 0.9s ease, transform 0.9s ease;}
-  .secret.in-view .chapter-label,.secret.in-view .chapter-heading{opacity:1;transform:translateY(0);}
-  .secret .chapter-heading{margin-bottom:0.4rem;}
-  .secret-hint{
-    font-size:0.9rem;
-    font-weight:300;
-    color:rgba(246,236,221,0.65);
-    margin-bottom:2.4rem;
-    font-style:italic;
-  }
-  .secret .frame{max-width:520px;margin:0 auto;}
-  .secret .frame iframe{aspect-ratio:9/16;max-height:560px;}
-
-  .divider{
-    width:1px;
-    height:64px;
-    margin:0 auto;
-    background:linear-gradient(180deg, transparent, var(--gold), transparent);
-    opacity:0.5;
-    position:relative;
-    z-index:2;
-  }
-
-  /* ---------- closing ---------- */
-  .closing{
-    position:relative;
-    z-index:2;
-    min-height:90vh;
+  .btn-primary{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background: linear-gradient(135deg, var(--accent), var(--pink));
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
     display:flex;
-    flex-direction:column;
     align-items:center;
     justify-content:center;
-    text-align:center;
-    padding:5rem 1.5rem;
-    background:radial-gradient(ellipse at 50% 50%, rgba(207,155,78,0.10), transparent 65%);
+    gap:8px;
+    margin-top: 6px;
+    box-shadow: 0 10px 24px rgba(216,90,48,0.30);
+    transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+    position:relative;
+    overflow:hidden;
   }
-  .closing .mark{
-    font-size:0.74rem;
-    letter-spacing:0.3em;
-    text-transform:uppercase;
-    color:var(--gold);
-    margin-bottom:1.6rem;
-    opacity:0;
-    transform:translateY(10px);
-    transition:opacity 1s ease, transform 1s ease;
-  }
-  .closing-msg{
-    font-family:'Playfair Display', serif;
-    font-style:italic;
-    font-weight:500;
-    font-size:clamp(1.5rem, 4vw, 2.3rem);
-    line-height:1.55;
-    max-width:680px;
-    color:var(--cream);
-    opacity:0;
-    transform:translateY(10px);
-    transition:opacity 1s ease 0.15s, transform 1s ease 0.15s;
-  }
-  .closing-msg span.accent{color:var(--blush);}
-  .signature{
-    margin-top:2.4rem;
-    font-family:'Playfair Display', serif;
-    font-size:1.1rem;
-    color:var(--gold-soft);
-    opacity:0;
-    transform:translateY(10px);
-    transition:opacity 1s ease 0.3s, transform 1s ease 0.3s;
-  }
-  .signature small{
-    display:block;
-    font-family:'Be Vietnam Pro', sans-serif;
-    font-size:0.7rem;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color:rgba(246,236,221,0.5);
-    margin-top:0.6rem;
-    font-style:normal;
-  }
-  .closing.in-view .mark,
-  .closing.in-view .closing-msg,
-  .closing.in-view .signature{opacity:1;transform:translateY(0);}
+  .btn-primary:active{ transform: scale(0.98); }
+  .btn-primary:disabled{ opacity:0.7; cursor:not-allowed; }
 
-  @media (max-width:760px){
-    .chapter, .chapter.reverse{
-      grid-template-columns:1fr;
-      gap:1.8rem;
-      padding:4rem 1.4rem;
-    }
-    .chapter.reverse .chapter-text,
-    .chapter.reverse .chapter-media{order:initial;}
+  .spinner{
+    width:18px;height:18px;
+    border-radius:50%;
+    border:2.5px solid rgba(255,255,255,0.4);
+    border-top-color:#fff;
+    animation: spin .7s linear infinite;
+    display:none;
+  }
+  @keyframes spin{ to{ transform: rotate(360deg); } }
+
+  .switch-row{
+    text-align:center;
+    margin-top:20px;
+    font-size:13.5px;
+    color: var(--ink-soft);
+  }
+  .switch-row button{
+    background:none;border:none;
+    color: var(--accent);
+    font-weight:600;
+    cursor:pointer;
+    font-size:13.5px;
+    padding:0 2px;
+  }
+
+  .error-box{
+    background: #fcebeb;
+    color: #791f1f;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-bottom: 16px;
+    display:none;
+    align-items:flex-start;
+    gap:8px;
+    line-height:1.5;
+    animation: shake .35s ease;
+  }
+  .error-box.show{ display:flex; }
+  @keyframes shake{
+    0%,100%{ transform: translateX(0); }
+    25%{ transform: translateX(-5px); }
+    75%{ transform: translateX(5px); }
+  }
+  .error-box i{ font-size:16px; margin-top:1px; flex-shrink:0; }
+
+  .info-box{
+    background: #e1f5ee;
+    color: #085041;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-bottom: 16px;
+    display:none;
+    align-items:flex-start;
+    gap:8px;
+    line-height:1.5;
+  }
+  .info-box.show{ display:flex; }
+  .info-box i{ font-size:16px; margin-top:1px; flex-shrink:0; }
+
+  .divider{
+    text-align:center;
+    font-size:11px;
+    color: var(--ink-soft);
+    letter-spacing:0.06em;
+    margin: 8px 0 18px;
+    position:relative;
+  }
+
+  /* ---------- BIRTHDAY VIEW (carousel) ---------- */
+  #birthdayView{
+    display:none;
+    opacity:0;
+  }
+  #birthdayView.show{
+    display:block;
+    animation: fadeUp .5s ease both;
+  }
+  @keyframes fadeUp{
+    0%{ opacity:0; transform: translateY(16px); }
+    100%{ opacity:1; transform: translateY(0); }
+  }
+
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .user-chip{
+    display:flex; align-items:center; gap:10px;
+  }
+  .avatar{
+    width:34px;height:34px;border-radius:50%;
+    background: linear-gradient(135deg, var(--teal), var(--accent));
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:600;
+  }
+  .user-email{
+    font-size:12.5px; color: var(--ink-soft);
+    max-width:160px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .logout-btn{
+    background:none; border:1px solid var(--border);
+    border-radius:10px; padding:7px 10px;
+    color: var(--ink-soft); cursor:pointer;
+    font-size:13px; display:flex; align-items:center; gap:6px;
+    transition: background .2s ease, color .2s ease;
+  }
+  .logout-btn:hover{ background:#faf3ee; color: var(--accent); }
+
+  #stage{
+    position:relative;
+    height:480px;
+    background: #fffaf6;
+    overflow:hidden;
+  }
+  .page{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center;
+    padding: 2rem 1.75rem;
+  }
+  .page-icon{
+    width:64px;height:64px;border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom: 1.4rem;
+  }
+  .page-icon i{ font-size:28px; }
+  .page-kicker{
+    font-size:12.5px; letter-spacing:0.08em; color: var(--ink-soft); margin-bottom:8px;
+    text-transform:uppercase;
+  }
+  .page-title{
+    font-size:25px; font-weight:600; margin-bottom:14px; line-height:1.3;
+  }
+  .page-desc{
+    font-size:14.5px; color: var(--ink-soft); line-height:1.7; max-width:280px; margin-bottom:22px;
+  }
+  .video-btn{
+    display:flex; align-items:center; gap:8px;
+    border:none; border-radius:12px;
+    padding: 12px 22px;
+    font-size:14px; font-weight:600;
+    color:#fff;
+    cursor:pointer;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+    transition: transform .15s ease;
+  }
+  .video-btn:active{ transform: scale(0.97); }
+
+  .controls{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 16px;
+    border-top: 1px solid var(--border);
+  }
+  .nav-btn{
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid var(--border);
+    background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition: background .2s ease;
+  }
+  .nav-btn:hover{ background:#faf3ee; }
+  .dots{ display:flex; gap:7px; }
+  .dot{
+    width:7px;height:7px;border-radius:50%;
+    background: var(--border);
+    cursor:pointer;
+    transition: all .25s ease;
+  }
+  .dot.active{ width:18px; border-radius:4px; background: var(--accent); }
+
+  .footer-note{
+    text-align:center;
+    font-size:11.5px;
+    color: #b3a89f;
+    margin-top: 18px;
   }
 </style>
 </head>
 <body>
 
-<div id="particles"></div>
+<div class="bg-blob blob1"></div>
+<div class="bg-blob blob2"></div>
+<div class="bg-blob blob3"></div>
 
-<section class="hero">
-  <div class="candle">
-    <div class="glow"></div>
-    <div class="flame"></div>
-    <div class="wick"></div>
-    <div class="wax"></div>
-  </div>
-  <p class="eyebrow">Một ngày đặc biệt</p>
-  <h1 class="title">Chúc Mừng Sinh Nhật<em>Gửi đến người mà mình luôn trân quý</em></h1>
-  <p class="hero-sub">Trước khi nói thành lời, hãy để ba thước phim nhỏ này thay mình kể hết những điều muốn gửi gắm hôm nay.</p>
-  <div class="scroll-cue">
-    <span>Lướt xuống</span>
-    <svg viewBox="0 0 14 20" fill="none"><path d="M7 1v17M1 12l6 6 6-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </div>
-</section>
+<div class="app">
+  <div class="card">
 
-<div class="divider"></div>
+    <!-- ============ AUTH VIEW ============ -->
+    <div id="authView">
+      <div class="logo-circle"><i class="ti ti-cake"></i></div>
+      <h1 class="title" id="authTitle">Đăng nhập</h1>
+      <p class="subtitle" id="authSubtitle">Đăng nhập để mở thiệp chúc mừng sinh nhật dành riêng cho bạn</p>
 
-<section class="chapter" data-chapter>
-  <div class="chapter-text">
-    <p class="chapter-label">Chương một</p>
-    <h2 class="chapter-heading">Lời chúc</h2>
-    <p class="body">Có những điều chỉ nói được khi nhìn thẳng vào nhau, dù chỉ qua một khung hình nhỏ. Đây là lời chúc được ghi lại bằng tất cả sự chân thành, dành riêng cho bạn trong ngày hôm nay.</p>
-  </div>
-  <div class="chapter-media">
-    <div class="frame">
-      <video controls playsinline preload="metadata">
-        <source src="videos/loi-chuc.mp4" type="video/mp4">
-      </video>
-      <p class="frame-caption">"Lời chúc nhen"</p>
+      <div class="error-box" id="errorBox"><i class="ti ti-alert-circle"></i><span id="errorText"></span></div>
+      <div class="info-box" id="infoBox"><i class="ti ti-circle-check"></i><span id="infoText"></span></div>
+
+      <form id="authForm">
+        <div class="field">
+          <input type="email" id="email" placeholder="Email của bạn" autocomplete="email" required />
+          <i class="ti ti-mail field-icon"></i>
+        </div>
+        <div class="field">
+          <input type="password" id="password" placeholder="Mật khẩu" autocomplete="current-password" required />
+          <i class="ti ti-lock field-icon"></i>
+          <button type="button" class="toggle-pass" id="togglePass" aria-label="Hiện mật khẩu"><i class="ti ti-eye"></i></button>
+        </div>
+
+        <button type="submit" class="btn-primary" id="submitBtn">
+          <span class="spinner" id="spinner"></span>
+          <span id="submitLabel">Đăng nhập</span>
+          <i class="ti ti-arrow-right" id="submitIcon" style="font-size:17px;"></i>
+        </button>
+      </form>
+
+      <div class="switch-row" id="switchRow">
+        Chưa có tài khoản? <button id="switchBtn">Đăng ký ngay</button>
+      </div>
     </div>
-  </div>
-</section>
 
-<div class="divider"></div>
+    <!-- ============ BIRTHDAY VIEW ============ -->
+    <div id="birthdayView">
+      <div class="topbar">
+        <div class="user-chip">
+          <div class="avatar" id="avatarInitial">U</div>
+          <span class="user-email" id="userEmailLabel"></span>
+        </div>
+        <button class="logout-btn" id="logoutBtn"><i class="ti ti-logout-2"></i>Đăng xuất</button>
+      </div>
 
-<section class="chapter reverse" data-chapter>
-  <div class="chapter-text">
-    <p class="chapter-label">Chương hai</p>
-    <h2 class="chapter-heading">Khoảnh khắc nhận quà</h2>
-    <p class="body">Niềm vui đôi khi không nằm ở món quà, mà ở khoảnh khắc mở ra nó. Mong rằng nụ cười trong video này là một mảnh ghép nhỏ, góp thêm vào một ngày thật trọn vẹn của bạn.</p>
-  </div>
-  <div class="chapter-media">
-    <div class="frame">
-      <video controls playsinline preload="metadata">
-        <source src="videos/da-nhan-qua.mp4" type="video/mp4">
-      </video>
-      <p class="frame-caption">"Đã nhận quà nha"</p>
+      <div id="stage">
+        <div class="page" data-page="0">
+          <div class="page-icon" style="background:#e6f1fb;"><i class="ti ti-cake" style="color:#0c447c;"></i></div>
+          <p class="page-kicker">chúc mừng sinh nhật</p>
+          <h1 class="page-title">Một năm mới<br/>thật rực rỡ</h1>
+          <p class="page-desc">Vuốt sang để mở từng trang nhỏ, mỗi trang là một điều mình muốn gửi đến bạn hôm nay.</p>
+          <div style="margin-top:0.5rem;display:flex;align-items:center;gap:6px;color:var(--ink-soft);font-size:13px;">
+            <span>Bắt đầu</span><i class="ti ti-arrow-right" style="font-size:16px;"></i>
+          </div>
+        </div>
+
+        <div class="page" data-page="1">
+          <div class="page-icon" style="background:#faeeda;"><i class="ti ti-gift" style="color:#854f0b;"></i></div>
+          <p class="page-kicker">trang 02</p>
+          <h1 class="page-title">Đã nhận quà chưa nha?</h1>
+          <p class="page-desc">Có một món nho nhỏ đang đợi bạn, bấm vào xem thử nhé.</p>
+          <button class="video-btn" style="background:#ef9f27;" onclick="window.open('https://drive.google.com/file/d/1OtwMBphZCfUaWYdgmExhqUn7ns-v-nZA/view?usp=drive_link','_blank')">
+            <i class="ti ti-player-play"></i> Xem quà ↗
+          </button>
+        </div>
+
+        <div class="page" data-page="2">
+          <div class="page-icon" style="background:#eeedfe;"><i class="ti ti-heart" style="color:#3c3489;"></i></div>
+          <p class="page-kicker">trang 03</p>
+          <h1 class="page-title">Lời chúc dành cho bạn</h1>
+          <p class="page-desc">Một đoạn video nhỏ, chứa những điều mình muốn nói.</p>
+          <button class="video-btn" style="background:#7f77dd;" onclick="window.open('https://drive.google.com/file/d/1ZrVvXjv6orMMrSi2BBmpphdQh-ioXzRG/view?usp=drive_link','_blank')">
+            <i class="ti ti-player-play"></i> Xem lời chúc ↗
+          </button>
+        </div>
+
+        <div class="page" data-page="3">
+          <div class="page-icon" style="background:#fbeaf0;"><i class="ti ti-message-circle-2" style="color:#72243e;"></i></div>
+          <p class="page-kicker">trang 04</p>
+          <h1 class="page-title">Một chút tâm sự</h1>
+          <p class="page-desc">Những điều mình giữ trong lòng, hôm nay muốn kể cho bạn nghe.</p>
+          <button class="video-btn" style="background:#d4537e;" onclick="window.open('https://drive.google.com/file/d/1QuBN3E-_1IalFP8QvbVOIRfKWePpc2wV/view?usp=drive_link','_blank')">
+            <i class="ti ti-player-play"></i> Xem tâm sự ↗
+          </button>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="nav-btn" id="prevBtn" aria-label="Trang trước"><i class="ti ti-chevron-left"></i></button>
+        <div class="dots" id="dots"></div>
+        <button class="nav-btn" id="nextBtn" aria-label="Trang sau"><i class="ti ti-chevron-right"></i></button>
+      </div>
     </div>
+
   </div>
-</section>
+  <p class="footer-note">Đăng nhập bằng Firebase Authentication</p>
+</div>
 
-<div class="divider"></div>
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-<section class="secret" data-chapter>
-  <p class="chapter-label">Chương ba</p>
-  <h2 class="chapter-heading">Bí mật nhỏ</h2>
-  <p class="secret-hint">Một điều giấu kín trong tim, hôm nay xin được mở ra cùng bạn.</p>
-  <div class="frame">
-    <iframe src="https://drive.google.com/file/d/1QuBN3E-_1IalFP8QvbVOIRfKWePpc2wV/preview" allow="autoplay" allowfullscreen></iframe>
-    <p class="frame-caption">Tâm trí</p>
-  </div>
-</section>
+  const firebaseConfig = {
+    apiKey: "AIzaSyA-G3BfucCstuMlQDKDsQVu3daQ854tuCQ",
+    authDomain: "csdl-login.firebaseapp.com",
+    databaseURL: "https://csdl-login-default-rtdb.firebaseio.com",
+    projectId: "csdl-login",
+    storageBucket: "csdl-login.firebasestorage.app",
+    messagingSenderId: "1036020118468",
+    appId: "1:1036020118468:web:6fe17be2597334f9986a91",
+    measurementId: "G-WGC5R6VVBK"
+  };
 
-<section class="closing" data-chapter>
-  <p class="mark">Lời cuối</p>
-  <p class="closing-msg">Chúc bạn một tuổi mới <span class="accent">an yên như ánh nến</span>, rực rỡ như những điều bạn xứng đáng có được, và luôn được yêu thương theo cách bạn vẫn luôn yêu thương người khác.<br>Sinh nhật vui vẻ nhé.</p>
-  <p class="signature">Với tất cả tấm lòng<small>Gửi từ một người luôn ở đây vì bạn</small></p>
-</section>
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-<script>
-  const pc = document.getElementById('particles');
-  const n = 28;
-  for(let i=0;i<n;i++){
-    const s = document.createElement('div');
-    s.className = 'spark';
-    s.style.left = Math.random()*100 + 'vw';
-    s.style.bottom = '-10px';
-    s.style.animationDuration = (8 + Math.random()*10) + 's';
-    s.style.animationDelay = (Math.random()*12) + 's';
-    s.style.width = s.style.height = (2 + Math.random()*2) + 'px';
-    pc.appendChild(s);
+  // ---------- DOM refs ----------
+  const authView = document.getElementById('authView');
+  const birthdayView = document.getElementById('birthdayView');
+  const authForm = document.getElementById('authForm');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const submitBtn = document.getElementById('submitBtn');
+  const submitLabel = document.getElementById('submitLabel');
+  const submitIcon = document.getElementById('submitIcon');
+  const spinner = document.getElementById('spinner');
+  const errorBox = document.getElementById('errorBox');
+  const errorText = document.getElementById('errorText');
+  const infoBox = document.getElementById('infoBox');
+  const infoText = document.getElementById('infoText');
+  const switchBtn = document.getElementById('switchBtn');
+  const switchRow = document.getElementById('switchRow');
+  const authTitle = document.getElementById('authTitle');
+  const authSubtitle = document.getElementById('authSubtitle');
+  const togglePass = document.getElementById('togglePass');
+  const logoutBtn = document.getElementById('logoutBtn');
+  const userEmailLabel = document.getElementById('userEmailLabel');
+  const avatarInitial = document.getElementById('avatarInitial');
+
+  let mode = 'login'; // 'login' | 'signup'
+
+  function showError(msg){
+    errorText.textContent = msg;
+    errorBox.classList.add('show');
+    infoBox.classList.remove('show');
+  }
+  function hideError(){ errorBox.classList.remove('show'); }
+  function showInfo(msg){
+    infoText.textContent = msg;
+    infoBox.classList.add('show');
+    errorBox.classList.remove('show');
+  }
+  function hideInfo(){ infoBox.classList.remove('show'); }
+
+  function setLoading(loading){
+    submitBtn.disabled = loading;
+    spinner.style.display = loading ? 'inline-block' : 'none';
+    submitIcon.style.display = loading ? 'none' : 'inline-block';
+    submitLabel.textContent = loading
+      ? (mode === 'login' ? 'Đang đăng nhập...' : 'Đang tạo tài khoản...')
+      : (mode === 'login' ? 'Đăng nhập' : 'Đăng ký');
   }
 
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('in-view');
-      }
+  function setMode(newMode){
+    mode = newMode;
+    hideError(); hideInfo();
+    if(mode === 'login'){
+      authTitle.textContent = 'Đăng nhập';
+      authSubtitle.textContent = 'Đăng nhập để mở thiệp chúc mừng sinh nhật dành riêng cho bạn';
+      submitLabel.textContent = 'Đăng nhập';
+      switchRow.innerHTML = 'Chưa có tài khoản? <button id="switchBtn">Đăng ký ngay</button>';
+    } else {
+      authTitle.textContent = 'Tạo tài khoản';
+      authSubtitle.textContent = 'Tạo tài khoản mới bằng email để truy cập thiệp';
+      submitLabel.textContent = 'Đăng ký';
+      switchRow.innerHTML = 'Đã có tài khoản? <button id="switchBtn">Đăng nhập</button>';
+    }
+    document.getElementById('switchBtn').addEventListener('click', () => {
+      setMode(mode === 'login' ? 'signup' : 'login');
     });
-  }, {threshold:0.25});
-  document.querySelectorAll('[data-chapter]').forEach(el=>observer.observe(el));
-</script>
+  }
+  switchBtn.addEventListener('click', () => setMode(mode === 'login' ? 'signup' : 'login'));
 
+  togglePass.addEventListener('click', () => {
+    const isPass = passwordInput.type === 'password';
+    passwordInput.type = isPass ? 'text' : 'password';
+    togglePass.innerHTML = isPass ? '<i class="ti ti-eye-off"></i>' : '<i class="ti ti-eye"></i>';
+  });
+
+  function friendlyError(code){
+    const map = {
+      'auth/invalid-email': 'Email không hợp lệ.',
+      'auth/user-not-found': 'Tài khoản chưa tồn tại. Hãy đăng ký trước nhé.',
+      'auth/wrong-password': 'Sai mật khẩu, thử lại nhé.',
+      'auth/invalid-credential': 'Email hoặc mật khẩu không đúng.',
+      'auth/email-already-in-use': 'Email này đã được đăng ký rồi.',
+      'auth/weak-password': 'Mật khẩu cần ít nhất 6 ký tự.',
+      'auth/too-many-requests': 'Bạn thử sai quá nhiều lần, vui lòng đợi một chút.',
+      'auth/network-request-failed': 'Lỗi kết nối mạng, kiểm tra lại internet nhé.'
+    };
+    return map[code] || 'Có lỗi xảy ra, vui lòng thử lại.';
+  }
+
+  authForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError(); hideInfo();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+    if(!email || !password){ showError('Vui lòng nhập đầy đủ email và mật khẩu.'); return; }
+
+    setLoading(true);
+    try{
+      if(mode === 'login'){
+        await signInWithEmailAndPassword(auth, email, password);
+      } else {
+        await createUserWithEmailAndPassword(auth, email, password);
+        showInfo('Tạo tài khoản thành công! Đang đăng nhập...');
+      }
+    } catch(err){
+      showError(friendlyError(err.code));
+      setLoading(false);
+    }
+  });
+
+  logoutBtn.addEventListener('click', async () => {
+    await signOut(auth);
+  });
+
+  onAuthStateChanged(auth, (user) => {
+    setLoading(false);
+    if(user){
+      authView.style.display = 'none';
+      birthdayView.classList.add('show');
+      userEmailLabel.textContent = user.email || '';
+      avatarInitial.textContent = (user.email || 'U').charAt(0).toUpperCase();
+      launchConfetti();
+    } else {
+      birthdayView.classList.remove('show');
+      authView.style.display = 'block';
+    }
+  });
+
+  setMode('login');
+
+  // ---------- confetti on success ----------
+  function launchConfetti(){
+    const colors = ['#d85a30','#d4537e','#1d9e75','#ef9f27','#7f77dd'];
+    for(let i=0;i<28;i++){
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      const size = 6 + Math.random()*6;
+      c.style.width = size + 'px';
+      c.style.height = (size*0.4) + 'px';
+      c.style.background = colors[Math.floor(Math.random()*colors.length)];
+      c.style.left = Math.random()*100 + 'vw';
+      c.style.transform = 'rotate(' + (Math.random()*360) + 'deg)';
+      document.body.appendChild(c);
+      const duration = 2200 + Math.random()*1800;
+      const drift = (Math.random()-0.5)*200;
+      c.animate([
+        { transform: c.style.transform + ' translate(0,0)', opacity: 1 },
+        { transform: c.style.transform + ' translate(' + drift + 'px, 100vh)', opacity: 0.9 }
+      ], { duration: duration, easing: 'cubic-bezier(.25,.46,.45,.94)', fill:'forwards' });
+      setTimeout(() => c.remove(), duration + 100);
+    }
+  }
+
+  // ---------- carousel logic ----------
+  const pages = document.querySelectorAll('#stage .page');
+  const dotsWrap = document.getElementById('dots');
+  let current = 0;
+  const total = pages.length;
+
+  for(let i=0;i<total;i++){
+    const d = document.createElement('div');
+    d.className = 'dot' + (i===0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  }
+
+  function render(){
+    pages.forEach((p, idx) => {
+      const offset = (idx - current) * 100;
+      p.style.transform = 'translateX(' + offset + '%)';
+      p.style.transition = 'transform .4s cubic-bezier(.4,0,.2,1)';
+      p.style.opacity = idx === current ? '1' : '0';
+      p.style.pointerEvents = idx === current ? 'auto' : 'none';
+    });
+    const dots = dotsWrap.children;
+    for(let i=0;i<dots.length;i++){
+      dots[i].classList.toggle('active', i === current);
+    }
+    document.getElementById('prevBtn').style.visibility = current === 0 ? 'hidden' : 'visible';
+    document.getElementById('nextBtn').style.visibility = current === total - 1 ? 'hidden' : 'visible';
+  }
+
+  function goTo(idx){
+    current = Math.max(0, Math.min(total - 1, idx));
+    render();
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+
+  let startX = 0;
+  const stage = document.getElementById('stage');
+  stage.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, {passive:true});
+  stage.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if(dx > 50) goTo(current - 1);
+    else if(dx < -50) goTo(current + 1);
+  }, {passive:true});
+
+  render();
+</script>
 </body>
 </html>
