@@ -58,6 +58,35 @@
     50%{ transform: translateY(-30px) translateX(20px) scale(1.08); }
   }
 
+  /* floating balloons + sparkles (background decoration) */
+  .deco-icon{
+    position:fixed;
+    z-index:1;
+    pointer-events:none;
+    opacity:0.55;
+    animation: drift 9s ease-in-out infinite;
+  }
+  @keyframes drift{
+    0%,100%{ transform: translateY(0) rotate(-4deg); }
+    50%{ transform: translateY(-22px) rotate(4deg); }
+  }
+  .balloon1{ top:10%; left:6%; font-size:34px; color:var(--pink); animation-delay:0s; }
+  .balloon2{ top:65%; left:4%; font-size:26px; color:var(--teal); animation-delay:1.2s; }
+  .balloon3{ top:18%; right:6%; font-size:30px; color:var(--gold); animation-delay:2.4s; }
+  .balloon4{ top:75%; right:8%; font-size:24px; color:var(--accent); animation-delay:3.6s; }
+  .sparkle{ position:fixed; z-index:1; pointer-events:none; color:var(--gold); animation: twinkle 2.4s ease-in-out infinite; }
+  @keyframes twinkle{
+    0%,100%{ opacity:0.2; transform:scale(0.8); }
+    50%{ opacity:1; transform:scale(1.15); }
+  }
+  .sp1{ top:14%; left:30%; font-size:14px; animation-delay:0.3s; }
+  .sp2{ top:55%; right:20%; font-size:12px; animation-delay:1s; }
+  .sp3{ bottom:12%; left:22%; font-size:16px; animation-delay:1.7s; }
+
+  @media (max-width:480px){
+    .deco-icon, .sparkle{ display:none; }
+  }
+
   .confetti{
     position:fixed;
     top:-20px;
@@ -95,12 +124,18 @@
     display:flex;align-items:center;justify-content:center;
     margin: 0 auto 18px;
     box-shadow: 0 10px 25px rgba(216,90,48,0.35);
-    animation: pop .6s cubic-bezier(.34,1.56,.64,1) both;
+    animation: pop .6s cubic-bezier(.34,1.56,.64,1) both, wiggle 3.5s ease-in-out infinite 0.7s;
   }
   .logo-circle i{ font-size:30px; color:#fff; }
   @keyframes pop{
     0%{ transform: scale(0); opacity:0; }
     100%{ transform: scale(1); opacity:1; }
+  }
+  @keyframes wiggle{
+    0%,92%,100%{ transform: rotate(0deg); }
+    94%{ transform: rotate(-8deg); }
+    96%{ transform: rotate(8deg); }
+    98%{ transform: rotate(-4deg); }
   }
   h1.title{
     text-align:center;
@@ -315,6 +350,12 @@
     width:64px;height:64px;border-radius:50%;
     display:flex; align-items:center; justify-content:center;
     margin-bottom: 1.4rem;
+    animation: bounceIn .6s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  @keyframes bounceIn{
+    0%{ transform: scale(0.4) translateY(10px); opacity:0; }
+    70%{ transform: scale(1.08) translateY(0); opacity:1; }
+    100%{ transform: scale(1); }
   }
   .page-icon i{ font-size:28px; }
   .page-kicker{
@@ -337,7 +378,13 @@
     box-shadow: 0 10px 22px rgba(0,0,0,0.15);
     transition: transform .15s ease;
   }
+  .video-btn:hover{ transform: scale(1.03); }
   .video-btn:active{ transform: scale(0.97); }
+  .video-btn i{ animation: pulseIcon 1.6s ease-in-out infinite; }
+  @keyframes pulseIcon{
+    0%,100%{ transform: scale(1); }
+    50%{ transform: scale(1.18); }
+  }
 
   .controls{
     display:flex; align-items:center; justify-content:space-between;
@@ -375,6 +422,15 @@
 <div class="bg-blob blob1"></div>
 <div class="bg-blob blob2"></div>
 <div class="bg-blob blob3"></div>
+
+<!-- decorative floating icons -->
+<div class="deco-icon balloon1"><i class="ti ti-balloon"></i></div>
+<div class="deco-icon balloon2"><i class="ti ti-gift"></i></div>
+<div class="deco-icon balloon3"><i class="ti ti-balloon"></i></div>
+<div class="deco-icon balloon4"><i class="ti ti-confetti"></i></div>
+<div class="sparkle sp1"><i class="ti ti-sparkles"></i></div>
+<div class="sparkle sp2"><i class="ti ti-sparkles"></i></div>
+<div class="sparkle sp3"><i class="ti ti-sparkles"></i></div>
 
 <div class="app">
   <div class="card">
