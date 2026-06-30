@@ -9,21 +9,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream:#fbf4e8;
-    --paper:#fffaf2;
-    --ink:#3a2a22;
-    --ink-soft:#6b564a;
-    --gold:#b9893f;
-    --gold-deep:#8c641f;
-    --gold-soft:#e3c07f;
-    --blush:#c97a6d;
-    --line: rgba(185,137,63,0.22);
+    --wine:#2a1014;
+    --wine-deep:#190a0c;
+    --cream:#f6ecdd;
+    --gold:#cf9b4e;
+    --gold-soft:#e4c182;
+    --blush:#d98e8a;
+    --line: rgba(228,193,130,0.25);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    background:var(--cream);
-    color:var(--ink);
+    background:var(--wine-deep);
+    color:var(--cream);
     font-family:'Be Vietnam Pro', sans-serif;
     overflow-x:hidden;
   }
@@ -38,12 +36,12 @@
     background:var(--gold-soft);
     opacity:0;
     animation:rise linear infinite;
-    box-shadow:0 0 6px 1px rgba(227,192,127,0.7);
+    box-shadow:0 0 6px 1px rgba(228,193,130,0.6);
   }
   @keyframes rise{
     0%{transform:translateY(0) translateX(0);opacity:0;}
-    10%{opacity:0.8;}
-    90%{opacity:0.4;}
+    10%{opacity:0.9;}
+    90%{opacity:0.5;}
     100%{transform:translateY(-110vh) translateX(20px);opacity:0;}
   }
 
@@ -58,9 +56,9 @@
     text-align:center;
     padding:2rem 1.5rem;
     background:
-      radial-gradient(ellipse at 50% 25%, rgba(227,192,127,0.30), transparent 60%),
-      radial-gradient(ellipse at 50% 100%, rgba(201,122,109,0.14), transparent 55%),
-      var(--cream);
+      radial-gradient(ellipse at 50% 30%, rgba(207,155,78,0.16), transparent 60%),
+      radial-gradient(ellipse at 50% 100%, rgba(217,142,138,0.10), transparent 55%),
+      var(--wine-deep);
     z-index:2;
   }
   .candle{
@@ -75,7 +73,7 @@
     transform:translateX(-50%);
     width:18px;height:30px;
     border-radius:50% 50% 50% 50% / 65% 65% 35% 35%;
-    background:radial-gradient(ellipse at 50% 70%, #fff7da 0%, #f6c869 35%, #df8a3a 70%, transparent 100%);
+    background:radial-gradient(ellipse at 50% 70%, #fff3c4 0%, #f3b65a 35%, #d9722c 70%, transparent 100%);
     filter:blur(0.3px);
     animation:flicker 2.6s ease-in-out infinite;
     transform-origin:50% 100%;
@@ -86,7 +84,7 @@
     transform:translateX(-50%);
     width:70px;height:70px;
     border-radius:50%;
-    background:radial-gradient(circle, rgba(246,200,105,0.45), transparent 70%);
+    background:radial-gradient(circle, rgba(243,182,90,0.35), transparent 70%);
     animation:flicker 2.6s ease-in-out infinite;
   }
   @keyframes flicker{
@@ -100,24 +98,23 @@
     bottom:0;left:50%;
     transform:translateX(-50%);
     width:30px;height:100px;
-    background:linear-gradient(180deg, var(--gold-soft), var(--gold) 60%, var(--gold-deep));
+    background:linear-gradient(180deg, var(--gold-soft), var(--gold) 60%, #a87a35);
     border-radius:4px 4px 2px 2px;
-    box-shadow:0 6px 18px rgba(140,100,31,0.18);
   }
   .wick{
     position:absolute;
     top:-6px;left:50%;
     transform:translateX(-50%);
     width:2px;height:8px;
-    background:#5a4530;
+    background:#3a2a1a;
   }
 
   .eyebrow{
     font-size:0.78rem;
     letter-spacing:0.32em;
     text-transform:uppercase;
-    color:var(--gold-deep);
-    opacity:0.9;
+    color:var(--gold-soft);
+    opacity:0.85;
     margin-bottom:0.9rem;
   }
   h1.title{
@@ -125,7 +122,8 @@
     font-weight:500;
     font-style:italic;
     line-height:1.1;
-    color:var(--ink);
+    color:var(--cream);
+    text-shadow:0 0 30px rgba(207,155,78,0.25);
   }
   .title em{
     display:block;
@@ -142,14 +140,14 @@
     font-size:1rem;
     font-weight:300;
     line-height:1.8;
-    color:var(--ink-soft);
+    color:rgba(246,236,221,0.78);
   }
   .scroll-cue{
     margin-top:3.2rem;
     font-size:0.75rem;
     letter-spacing:0.2em;
-    color:var(--gold-deep);
-    opacity:0.75;
+    color:var(--gold-soft);
+    opacity:0.7;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -193,7 +191,7 @@
     font-style:italic;
     font-weight:500;
     font-size:clamp(1.7rem, 3.4vw, 2.5rem);
-    color:var(--ink);
+    color:var(--cream);
     margin-bottom:1.1rem;
     opacity:0;
     transform:translateY(14px);
@@ -203,7 +201,7 @@
     font-size:0.96rem;
     font-weight:300;
     line-height:1.85;
-    color:var(--ink-soft);
+    color:rgba(246,236,221,0.75);
     opacity:0;
     transform:translateY(14px);
     transition:opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s;
@@ -217,32 +215,28 @@
 
   .frame{
     position:relative;
-    border-radius:16px;
+    border-radius:14px;
     padding:10px;
-    background:linear-gradient(160deg, rgba(255,250,242,0.9), rgba(227,192,127,0.12));
+    background:linear-gradient(160deg, rgba(228,193,130,0.16), rgba(228,193,130,0.02));
     border:1px solid var(--line);
-    box-shadow:0 18px 40px -20px rgba(140,100,31,0.25);
     opacity:0;
     transform:translateY(24px) scale(0.97);
     transition:opacity 1s ease 0.15s, transform 1s ease 0.15s;
   }
   .chapter.in-view .frame{opacity:1;transform:translateY(0) scale(1);}
-  .frame iframe{
+  .frame video, .frame iframe{
     width:100%;
-    aspect-ratio:9/16;
-    max-height:560px;
     display:block;
-    margin:0 auto;
-    border-radius:10px;
+    border-radius:8px;
     background:#000;
-    border:none;
   }
+  .frame video{aspect-ratio:9/16;object-fit:cover;max-height:560px;margin:0 auto;}
   .frame-caption{
     text-align:center;
     font-size:0.74rem;
     letter-spacing:0.1em;
-    color:var(--gold-deep);
-    opacity:0.85;
+    color:var(--gold-soft);
+    opacity:0.7;
     margin-top:0.7rem;
     font-style:italic;
     font-family:'Playfair Display', serif;
@@ -263,18 +257,19 @@
   .secret-hint{
     font-size:0.9rem;
     font-weight:300;
-    color:var(--ink-soft);
+    color:rgba(246,236,221,0.65);
     margin-bottom:2.4rem;
     font-style:italic;
   }
   .secret .frame{max-width:520px;margin:0 auto;}
+  .secret .frame iframe{aspect-ratio:9/16;max-height:560px;}
 
   .divider{
     width:1px;
     height:64px;
     margin:0 auto;
     background:linear-gradient(180deg, transparent, var(--gold), transparent);
-    opacity:0.55;
+    opacity:0.5;
     position:relative;
     z-index:2;
   }
@@ -290,7 +285,7 @@
     justify-content:center;
     text-align:center;
     padding:5rem 1.5rem;
-    background:radial-gradient(ellipse at 50% 50%, rgba(227,192,127,0.20), transparent 65%);
+    background:radial-gradient(ellipse at 50% 50%, rgba(207,155,78,0.10), transparent 65%);
   }
   .closing .mark{
     font-size:0.74rem;
@@ -309,7 +304,7 @@
     font-size:clamp(1.5rem, 4vw, 2.3rem);
     line-height:1.55;
     max-width:680px;
-    color:var(--ink);
+    color:var(--cream);
     opacity:0;
     transform:translateY(10px);
     transition:opacity 1s ease 0.15s, transform 1s ease 0.15s;
@@ -319,7 +314,7 @@
     margin-top:2.4rem;
     font-family:'Playfair Display', serif;
     font-size:1.1rem;
-    color:var(--gold-deep);
+    color:var(--gold-soft);
     opacity:0;
     transform:translateY(10px);
     transition:opacity 1s ease 0.3s, transform 1s ease 0.3s;
@@ -330,7 +325,7 @@
     font-size:0.7rem;
     letter-spacing:0.18em;
     text-transform:uppercase;
-    color:var(--ink-soft);
+    color:rgba(246,236,221,0.5);
     margin-top:0.6rem;
     font-style:normal;
   }
@@ -374,13 +369,15 @@
 <section class="chapter" data-chapter>
   <div class="chapter-text">
     <p class="chapter-label">Chương một</p>
-    <h2 class="chapter-heading">Khoảnh khắc nhận quà</h2>
-    <p class="body">Niềm vui đôi khi không nằm ở món quà, mà ở khoảnh khắc mở ra nó. Mong rằng nụ cười trong video này là một mảnh ghép nhỏ, góp thêm vào một ngày thật trọn vẹn của bạn.</p>
+    <h2 class="chapter-heading">Lời chúc</h2>
+    <p class="body">Có những điều chỉ nói được khi nhìn thẳng vào nhau, dù chỉ qua một khung hình nhỏ. Đây là lời chúc được ghi lại bằng tất cả sự chân thành, dành riêng cho bạn trong ngày hôm nay.</p>
   </div>
   <div class="chapter-media">
     <div class="frame">
-      <iframe src="https://drive.google.com/file/d/1OtwMBphZCfUaWYdgmExhqUn7ns-v-nZA/preview" allow="autoplay" allowfullscreen></iframe>
-      <p class="frame-caption">"Đã nhận quà nha"</p>
+      <video controls playsinline preload="metadata">
+        <source src="videos/loi-chuc.mp4" type="video/mp4">
+      </video>
+      <p class="frame-caption">"Lời chúc nhen"</p>
     </div>
   </div>
 </section>
@@ -390,13 +387,15 @@
 <section class="chapter reverse" data-chapter>
   <div class="chapter-text">
     <p class="chapter-label">Chương hai</p>
-    <h2 class="chapter-heading">Lời chúc</h2>
-    <p class="body">Có những điều chỉ nói được khi nhìn thẳng vào nhau, dù chỉ qua một khung hình nhỏ. Đây là lời chúc được ghi lại bằng tất cả sự chân thành, dành riêng cho bạn trong ngày hôm nay.</p>
+    <h2 class="chapter-heading">Khoảnh khắc nhận quà</h2>
+    <p class="body">Niềm vui đôi khi không nằm ở món quà, mà ở khoảnh khắc mở ra nó. Mong rằng nụ cười trong video này là một mảnh ghép nhỏ, góp thêm vào một ngày thật trọn vẹn của bạn.</p>
   </div>
   <div class="chapter-media">
     <div class="frame">
-      <iframe src="https://drive.google.com/file/d/1ZrVvXjv6orMMrSi2BBmpphdQh-ioXzRG/preview" allow="autoplay" allowfullscreen></iframe>
-      <p class="frame-caption">"Lời chúc nhen"</p>
+      <video controls playsinline preload="metadata">
+        <source src="videos/da-nhan-qua.mp4" type="video/mp4">
+      </video>
+      <p class="frame-caption">"Đã nhận quà nha"</p>
     </div>
   </div>
 </section>
@@ -405,11 +404,11 @@
 
 <section class="secret" data-chapter>
   <p class="chapter-label">Chương ba</p>
-  <h2 class="chapter-heading">Tâm sự</h2>
+  <h2 class="chapter-heading">Bí mật nhỏ</h2>
   <p class="secret-hint">Một điều giấu kín trong tim, hôm nay xin được mở ra cùng bạn.</p>
   <div class="frame">
     <iframe src="https://drive.google.com/file/d/1QuBN3E-_1IalFP8QvbVOIRfKWePpc2wV/preview" allow="autoplay" allowfullscreen></iframe>
-    <p class="frame-caption">Tâm sự</p>
+    <p class="frame-caption">Tâm trí</p>
   </div>
 </section>
 
@@ -421,7 +420,7 @@
 
 <script>
   const pc = document.getElementById('particles');
-  const n = 26;
+  const n = 28;
   for(let i=0;i<n;i++){
     const s = document.createElement('div');
     s.className = 'spark';
