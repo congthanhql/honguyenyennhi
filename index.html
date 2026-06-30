@@ -434,7 +434,7 @@
 
         <div class="page" data-page="1">
           <div class="page-icon" style="background:#faeeda;"><i class="ti ti-gift" style="color:#854f0b;"></i></div>
-          <p class="page-kicker">trang 02</p>
+          <p class="page-kicker">Bio</p>
           <h1 class="page-title">Đã nhận quà chưa nha?</h1>
           <p class="page-desc">Có một món nho nhỏ đang đợi bạn, bấm vào xem thử nhé.</p>
           <button class="video-btn" style="background:#ef9f27;" onclick="window.open('https://drive.google.com/file/d/1OtwMBphZCfUaWYdgmExhqUn7ns-v-nZA/view?usp=drive_link','_blank')">
@@ -444,7 +444,7 @@
 
         <div class="page" data-page="2">
           <div class="page-icon" style="background:#eeedfe;"><i class="ti ti-heart" style="color:#3c3489;"></i></div>
-          <p class="page-kicker">trang 03</p>
+          <p class="page-kicker">Bio</p>
           <h1 class="page-title">Lời chúc dành cho bạn</h1>
           <p class="page-desc">Một đoạn video nhỏ, chứa những điều mình muốn nói.</p>
           <button class="video-btn" style="background:#7f77dd;" onclick="window.open('https://drive.google.com/file/d/1ZrVvXjv6orMMrSi2BBmpphdQh-ioXzRG/view?usp=drive_link','_blank')">
@@ -454,7 +454,7 @@
 
         <div class="page" data-page="3">
           <div class="page-icon" style="background:#fbeaf0;"><i class="ti ti-message-circle-2" style="color:#72243e;"></i></div>
-          <p class="page-kicker">trang 04</p>
+          <p class="page-kicker">Bio</p>
           <h1 class="page-title">Một chút tâm sự</h1>
           <p class="page-desc">Những điều mình giữ trong lòng, hôm nay muốn kể cho bạn nghe.</p>
           <button class="video-btn" style="background:#d4537e;" onclick="window.open('https://drive.google.com/file/d/1QuBN3E-_1IalFP8QvbVOIRfKWePpc2wV/view?usp=drive_link','_blank')">
@@ -543,7 +543,7 @@
     submitIcon.style.display = loading ? 'none' : 'inline-block';
     submitLabel.textContent = loading
       ? (mode === 'login' ? 'Đang đăng nhập...' : 'Đang tạo tài khoản...')
-      : (mode === 'login' ? 'Đăng nhập' : 'Đăng ký');
+      : (mode === 'login' ? 'Đăng nhập' : '');
   }
 
   function setMode(newMode){
@@ -553,11 +553,11 @@
       authTitle.textContent = 'Đăng nhập';
       authSubtitle.textContent = 'Đăng nhập để mở thiệp chúc mừng sinh nhật dành riêng cho bạn';
       submitLabel.textContent = 'Đăng nhập';
-      switchRow.innerHTML = 'Chưa có tài khoản? <button id="switchBtn">Đăng ký ngay</button>';
+      switchRow.innerHTML = 'Chưa có tài khoản? <button id=""></button>';
     } else {
       authTitle.textContent = 'Tạo tài khoản';
       authSubtitle.textContent = 'Tạo tài khoản mới bằng email để truy cập thiệp';
-      submitLabel.textContent = 'Đăng ký';
+      submitLabel.textContent = '';
       switchRow.innerHTML = 'Đã có tài khoản? <button id="switchBtn">Đăng nhập</button>';
     }
     document.getElementById('switchBtn').addEventListener('click', () => {
